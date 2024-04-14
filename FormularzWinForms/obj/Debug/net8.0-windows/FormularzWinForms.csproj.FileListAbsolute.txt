@@ -3,7 +3,6 @@ C:\Users\Łukasz\Documents\Studia\Programowanie obiektowe i graficzne\FormularzW
 C:\Users\Łukasz\Documents\Studia\Programowanie obiektowe i graficzne\FormularzWinForms\FormularzWinForms\bin\Debug\net8.0-windows\FormularzWinForms.runtimeconfig.json
 C:\Users\Łukasz\Documents\Studia\Programowanie obiektowe i graficzne\FormularzWinForms\FormularzWinForms\bin\Debug\net8.0-windows\FormularzWinForms.dll
 C:\Users\Łukasz\Documents\Studia\Programowanie obiektowe i graficzne\FormularzWinForms\FormularzWinForms\bin\Debug\net8.0-windows\FormularzWinForms.pdb
-C:\Users\Łukasz\Documents\Studia\Programowanie obiektowe i graficzne\FormularzWinForms\FormularzWinForms\obj\Debug\net8.0-windows\FormularzWinForms.Form1.resources
 C:\Users\Łukasz\Documents\Studia\Programowanie obiektowe i graficzne\FormularzWinForms\FormularzWinForms\obj\Debug\net8.0-windows\FormularzWinForms.csproj.GenerateResource.cache
 C:\Users\Łukasz\Documents\Studia\Programowanie obiektowe i graficzne\FormularzWinForms\FormularzWinForms\obj\Debug\net8.0-windows\FormularzWinForms.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Łukasz\Documents\Studia\Programowanie obiektowe i graficzne\FormularzWinForms\FormularzWinForms\obj\Debug\net8.0-windows\FormularzWinForms.AssemblyInfoInputs.cache
@@ -43,3 +42,5 @@ C:\Users\Łukasz\Documents\Studia\Programowanie obiektowe i graficzne\FormularzW
 C:\Users\Łukasz\Documents\Studia\Programowanie obiektowe i graficzne\FormularzWinForms\FormularzWinForms\bin\Debug\net8.0-windows\Microsoft.Extensions.Options.dll
 C:\Users\Łukasz\Documents\Studia\Programowanie obiektowe i graficzne\FormularzWinForms\FormularzWinForms\bin\Debug\net8.0-windows\Microsoft.Extensions.Options.ConfigurationExtensions.dll
 C:\Users\Łukasz\Documents\Studia\Programowanie obiektowe i graficzne\FormularzWinForms\FormularzWinForms\bin\Debug\net8.0-windows\Microsoft.Extensions.Primitives.dll
+C:\Users\Łukasz\Documents\Studia\Programowanie obiektowe i graficzne\FormularzWinForms\FormularzWinForms\obj\Debug\net8.0-windows\FormularzWinForms.sourcelink.json
+C:\Users\Łukasz\Documents\Studia\Programowanie obiektowe i graficzne\FormularzWinForms\FormularzWinForms\obj\Debug\net8.0-windows\FormularzWinForms.EmployeeView.resources

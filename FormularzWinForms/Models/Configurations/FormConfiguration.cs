@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using FormularzWinForms.Presenters;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
@@ -23,7 +24,10 @@ namespace FormularzWinForms.Models.Configurations
         {
             services.AddTransient<IXmlSaveToFile, XmlSaveToFile>();
             services.AddTransient<IXmlReadFromFile, XmlReadFromFile>();
-            services.AddTransient<Form1>();
+            services.AddTransient<IEmployee, Employee>();
+            services.AddTransient<IEmployeeView, EmployeeView>();
+            services.AddTransient<IEmployeePresenter, EmployeePresenter>();
+            services.AddTransient<EmployeeView>();
 
             return services;
         }

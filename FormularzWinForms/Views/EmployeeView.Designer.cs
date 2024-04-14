@@ -2,7 +2,7 @@
 
 namespace FormularzWinForms
 {
-    partial class Form1
+    partial class EmployeeView
     {
         /// <summary>
         ///  Required designer variable.
@@ -88,7 +88,7 @@ namespace FormularzWinForms
             DodajButton.TabIndex = 14;
             DodajButton.Text = "Dodaj";
             DodajButton.UseVisualStyleBackColor = true;
-            DodajButton.Click += DodajButton_Click;
+            DodajButton.Click += AddToListBoxClicked;
             // 
             // RodzajUmowyLabel
             // 

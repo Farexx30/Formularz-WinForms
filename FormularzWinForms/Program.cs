@@ -1,4 +1,5 @@
 using FormularzWinForms.Models.Configurations;
+using FormularzWinForms.Presenters;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace FormularzWinForms
@@ -19,7 +20,7 @@ namespace FormularzWinForms
             ApplicationConfiguration.Initialize();
             FormConfiguration.ServiceProvider = builder.Services;
 
-            Application.Run(FormConfiguration.ServiceProvider.GetRequiredService<Form1>());
+            Application.Run(FormConfiguration.ServiceProvider.GetRequiredService<EmployeeView>());
         }
        
     }

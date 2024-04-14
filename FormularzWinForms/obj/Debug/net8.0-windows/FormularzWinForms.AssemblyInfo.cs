@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FormularzWinForms")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+468b8852924efa626f70f6b65e6231e0b8bfe8b0")]
 [assembly: System.Reflection.AssemblyProductAttribute("FormularzWinForms")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FormularzWinForms")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

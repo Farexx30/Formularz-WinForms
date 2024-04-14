@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\\u0141ukasz\\Documents\\Studia\\Programowanie obiektowe i graficzne\\FormularzWinForms\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1A993A28-D701-4B24-BC0C-1DC82CD1920D}|FormularzWinForms\\FormularzWinForms.csproj|C:\\Users\\\u0141ukasz\\Documents\\Studia\\Programowanie obiektowe i graficzne\\FormularzWinForms\\formularzwinforms\\views\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1A993A28-D701-4B24-BC0C-1DC82CD1920D}|FormularzWinForms\\FormularzWinForms.csproj|solutionrelative:formularzwinforms\\views\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1A993A28-D701-4B24-BC0C-1DC82CD1920D}|FormularzWinForms\\FormularzWinForms.csproj|c:\\users\\\u0142ukasz\\documents\\studia\\programowanie obiektowe i graficzne\\formularzwinforms\\formularzwinforms\\views\\employeeview.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1A993A28-D701-4B24-BC0C-1DC82CD1920D}|FormularzWinForms\\FormularzWinForms.csproj|solutionrelative:formularzwinforms\\views\\employeeview.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1A993A28-D701-4B24-BC0C-1DC82CD1920D}|FormularzWinForms\\FormularzWinForms.csproj|C:\\Users\\\u0141ukasz\\Documents\\Studia\\Programowanie obiektowe i graficzne\\FormularzWinForms\\formularzwinforms\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1A993A28-D701-4B24-BC0C-1DC82CD1920D}|FormularzWinForms\\FormularzWinForms.csproj|c:\\users\\\u0142ukasz\\documents\\studia\\programowanie obiektowe i graficzne\\formularzwinforms\\formularzwinforms\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1A993A28-D701-4B24-BC0C-1DC82CD1920D}|FormularzWinForms\\FormularzWinForms.csproj|solutionrelative:formularzwinforms\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1A993A28-D701-4B24-BC0C-1DC82CD1920D}|FormularzWinForms\\FormularzWinForms.csproj|c:\\users\\\u0142ukasz\\documents\\studia\\programowanie obiektowe i graficzne\\formularzwinforms\\formularzwinforms\\models\\configurations\\formconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1A993A28-D701-4B24-BC0C-1DC82CD1920D}|FormularzWinForms\\FormularzWinForms.csproj|solutionrelative:formularzwinforms\\models\\configurations\\formconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1A993A28-D701-4B24-BC0C-1DC82CD1920D}|FormularzWinForms\\FormularzWinForms.csproj|c:\\users\\\u0142ukasz\\documents\\studia\\programowanie obiektowe i graficzne\\formularzwinforms\\formularzwinforms\\presenters\\employeepresenter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1A993A28-D701-4B24-BC0C-1DC82CD1920D}|FormularzWinForms\\FormularzWinForms.csproj|solutionrelative:formularzwinforms\\presenters\\employeepresenter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1A993A28-D701-4B24-BC0C-1DC82CD1920D}|FormularzWinForms\\FormularzWinForms.csproj|c:\\users\\\u0142ukasz\\documents\\studia\\programowanie obiektowe i graficzne\\formularzwinforms\\formularzwinforms\\views\\employeeview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1A993A28-D701-4B24-BC0C-1DC82CD1920D}|FormularzWinForms\\FormularzWinForms.csproj|solutionrelative:formularzwinforms\\views\\employeeview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,38 +26,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Form1.cs",
-              "DocumentMoniker": "C:\\Users\\\u0141ukasz\\Documents\\Studia\\Programowanie obiektowe i graficzne\\FormularzWinForms\\FormularzWinForms\\Views\\Form1.cs",
-              "RelativeDocumentMoniker": "FormularzWinForms\\Views\\Form1.cs",
-              "ToolTip": "C:\\Users\\\u0141ukasz\\Documents\\Studia\\Programowanie obiektowe i graficzne\\FormularzWinForms\\FormularzWinForms\\Views\\Form1.cs",
-              "RelativeToolTip": "FormularzWinForms\\Views\\Form1.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAqwA8AAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-12T18:04:14.197Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "FormConfiguration.cs",
-              "DocumentMoniker": "C:\\Users\\\u0141ukasz\\Documents\\Studia\\Programowanie obiektowe i graficzne\\FormularzWinForms\\FormularzWinForms\\Models\\Configurations\\FormConfiguration.cs",
-              "RelativeDocumentMoniker": "FormularzWinForms\\Models\\Configurations\\FormConfiguration.cs",
-              "ToolTip": "C:\\Users\\\u0141ukasz\\Documents\\Studia\\Programowanie obiektowe i graficzne\\FormularzWinForms\\FormularzWinForms\\Models\\Configurations\\FormConfiguration.cs",
-              "RelativeToolTip": "FormularzWinForms\\Models\\Configurations\\FormConfiguration.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAATAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-14T09:38:55.814Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -63,9 +40,48 @@
               "RelativeDocumentMoniker": "FormularzWinForms\\Program.cs",
               "ToolTip": "C:\\Users\\\u0141ukasz\\Documents\\Studia\\Programowanie obiektowe i graficzne\\FormularzWinForms\\FormularzWinForms\\Program.cs",
               "RelativeToolTip": "FormularzWinForms\\Program.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAwAAAAJAAAA",
+              "ViewState": "AQIAAAcAAAAAAAAAAAArwBQAAABBAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-13T22:06:57.639Z",
+              "WhenOpened": "2024-04-14T21:09:18.857Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "EmployeeView.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\\u0141ukasz\\Documents\\Studia\\Programowanie obiektowe i graficzne\\FormularzWinForms\\FormularzWinForms\\Views\\EmployeeView.Designer.cs",
+              "RelativeDocumentMoniker": "FormularzWinForms\\Views\\EmployeeView.Designer.cs",
+              "ToolTip": "C:\\Users\\\u0141ukasz\\Documents\\Studia\\Programowanie obiektowe i graficzne\\FormularzWinForms\\FormularzWinForms\\Views\\EmployeeView.Designer.cs",
+              "RelativeToolTip": "FormularzWinForms\\Views\\EmployeeView.Designer.cs",
+              "ViewState": "AQIAAF4AAAAAAAAAAAAAAFoAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-14T20:54:10.016Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EmployeePresenter.cs",
+              "DocumentMoniker": "C:\\Users\\\u0141ukasz\\Documents\\Studia\\Programowanie obiektowe i graficzne\\FormularzWinForms\\FormularzWinForms\\Presenters\\EmployeePresenter.cs",
+              "RelativeDocumentMoniker": "FormularzWinForms\\Presenters\\EmployeePresenter.cs",
+              "ToolTip": "C:\\Users\\\u0141ukasz\\Documents\\Studia\\Programowanie obiektowe i graficzne\\FormularzWinForms\\FormularzWinForms\\Presenters\\EmployeePresenter.cs",
+              "RelativeToolTip": "FormularzWinForms\\Presenters\\EmployeePresenter.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAuwBMAAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-14T20:05:03.559Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "EmployeeView.cs",
+              "DocumentMoniker": "C:\\Users\\\u0141ukasz\\Documents\\Studia\\Programowanie obiektowe i graficzne\\FormularzWinForms\\FormularzWinForms\\Views\\EmployeeView.cs",
+              "RelativeDocumentMoniker": "FormularzWinForms\\Views\\EmployeeView.cs",
+              "ToolTip": "C:\\Users\\\u0141ukasz\\Documents\\Studia\\Programowanie obiektowe i graficzne\\FormularzWinForms\\FormularzWinForms\\Views\\EmployeeView.cs",
+              "RelativeToolTip": "FormularzWinForms\\Views\\EmployeeView.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAAcAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-14T18:07:08.789Z",
               "EditorCaption": ""
             }
           ]

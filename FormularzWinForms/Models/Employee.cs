@@ -13,7 +13,12 @@ namespace FormularzWinForms.Models
         Umowa3
     }
 
-    public class Employee
+    public interface IEmployee
+    {
+
+    }
+
+    public class Employee : IEmployee
     {
         public string FirstName { get; set; } = null!;
         public string LastName { get; set; } = null!;

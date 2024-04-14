@@ -1,23 +1,36 @@
 using FormularzWinForms.Models;
+using FormularzWinForms.Presenters;
 using Microsoft.VisualBasic.ApplicationServices;
 using System.Collections.ObjectModel;
 using System.Xml.Serialization;
 
 
-//Zmienic strukture do wzorca MVP, sprobowac zmodyfikowac/uproscic nieco funkcje/metody + przejrzec ogolnie co i jak
+//Zmienic strukture do wzorca MVP!!!, sprobowac zmodyfikowac/uproscic nieco funkcje/metody + przejrzec ogolnie co i jak
 namespace FormularzWinForms
 {
-    public partial class Form1 : Form
+    public interface IEmployeeView
+    {
+        event Action? AddToListBox;
+    }
+
+    public partial class EmployeeView : Form, IEmployeeView
     {
         private readonly IXmlSaveToFile _xmlSaveToFile;
         private readonly IXmlReadFromFile _xmlReadFromFile;
+        private readonly IEmployeePresenter _employeePresenter;
 
-        public Form1(IXmlSaveToFile xmlSaveToFileIXml, IXmlReadFromFile xmlReadFromFile)
+        public event Action? AddToListBox;
+
+        public EmployeeView(IXmlSaveToFile xmlSaveToFileIXml, IXmlReadFromFile xmlReadFromFile, IEmployeePresenter employeePresenter)
         {
             InitializeComponent();
             _xmlSaveToFile = xmlSaveToFileIXml;
             _xmlReadFromFile = xmlReadFromFile;
+            _employeePresenter = employeePresenter;
+            AddToListBox += _employeePresenter.HandleAddToListBox;
         }
+
+        public void AddToListBoxClicked(object sender, EventArgs e) => AddToListBox?.Invoke();
 
         private bool CheckAllPossibleErrors()
         {
