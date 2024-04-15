@@ -1,48 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfEmployee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Employee>
-    <FirstName>Testowa</FirstName>
-    <LastName>Test</LastName>
-    <DateOfBirth>2024-04-14T00:00:00</DateOfBirth>
+    <FirstName>x</FirstName>
+    <LastName>d</LastName>
+    <DateOfBirth>2024-04-15T00:00:00</DateOfBirth>
     <Salary>4000</Salary>
     <Position>Tester</Position>
     <ContractType>Umowa1</ContractType>
   </Employee>
   <Employee>
-    <FirstName>Testowa</FirstName>
-    <LastName>Test2</LastName>
-    <DateOfBirth>2024-04-14T00:00:00</DateOfBirth>
-    <Salary>4000</Salary>
-    <Position>Tester</Position>
-    <ContractType>Umowa1</ContractType>
-  </Employee>
-  <Employee>
-    <FirstName>S</FirstName>
-    <LastName>S</LastName>
-    <DateOfBirth>2024-04-14T00:00:00</DateOfBirth>
-    <Salary>4000</Salary>
-    <Position>Tester</Position>
-    <ContractType>Umowa3</ContractType>
-  </Employee>
-  <Employee>
-    <FirstName>S</FirstName>
-    <LastName>S</LastName>
-    <DateOfBirth>2024-04-14T00:00:00</DateOfBirth>
-    <Salary>4000</Salary>
-    <Position>Tester</Position>
-    <ContractType>Umowa2</ContractType>
-  </Employee>
-  <Employee>
-    <FirstName>S</FirstName>
-    <LastName>S</LastName>
-    <DateOfBirth>2024-04-14T00:00:00</DateOfBirth>
-    <Salary>4000</Salary>
-    <Position>Tester</Position>
-    <ContractType>Umowa1</ContractType>
-  </Employee>
-  <Employee>
-    <FirstName>dsa</FirstName>
-    <LastName>asds</LastName>
+    <FirstName>x</FirstName>
+    <LastName>d</LastName>
     <DateOfBirth>2024-04-14T00:00:00</DateOfBirth>
     <Salary>4000</Salary>
     <Position>Tester</Position>
@@ -50,18 +18,42 @@
   </Employee>
   <Employee>
     <FirstName>x</FirstName>
-    <LastName>dd</LastName>
-    <DateOfBirth>2024-04-14T00:00:00</DateOfBirth>
-    <Salary>5600</Salary>
-    <Position>Inżynier</Position>
-    <ContractType>Umowa3</ContractType>
-  </Employee>
-  <Employee>
-    <FirstName>bimbosz</FirstName>
-    <LastName>:)</LastName>
+    <LastName>d</LastName>
     <DateOfBirth>2024-04-14T00:00:00</DateOfBirth>
     <Salary>4000</Salary>
     <Position>Tester</Position>
     <ContractType>Umowa1</ContractType>
+  </Employee>
+  <Employee>
+    <FirstName>x</FirstName>
+    <LastName>d</LastName>
+    <DateOfBirth>2024-04-14T00:00:00</DateOfBirth>
+    <Salary>4000</Salary>
+    <Position>Tester</Position>
+    <ContractType>Umowa1</ContractType>
+  </Employee>
+  <Employee>
+    <FirstName>x</FirstName>
+    <LastName>d</LastName>
+    <DateOfBirth>2024-04-14T00:00:00</DateOfBirth>
+    <Salary>4000</Salary>
+    <Position>Tester</Position>
+    <ContractType>Umowa1</ContractType>
+  </Employee>
+  <Employee>
+    <FirstName>x</FirstName>
+    <LastName>d</LastName>
+    <DateOfBirth>2024-04-14T00:00:00</DateOfBirth>
+    <Salary>4000</Salary>
+    <Position>Starszy programista</Position>
+    <ContractType>Umowa1</ContractType>
+  </Employee>
+  <Employee>
+    <FirstName>te</FirstName>
+    <LastName>st</LastName>
+    <DateOfBirth>2003-04-11T00:00:00</DateOfBirth>
+    <Salary>4000</Salary>
+    <Position>Tester</Position>
+    <ContractType>Umowa3</ContractType>
   </Employee>
 </ArrayOfEmployee>

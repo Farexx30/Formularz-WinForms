@@ -16,7 +16,7 @@ namespace FormularzWinForms.Models
     {
         public void SerializeEmployees(List<Employee> employees)
         {
-            string filePath = $@"C:\Users\Łukasz\Documents\Studia\Programowanie obiektowe i graficzne\FormularzWinForms\FormularzWinForms\Data\Employees.xml";
+            string filePath = @"C:\Users\Łukasz\source\repos\Formularz-WinForms\FormularzWinForms\Data\Employees.xml";
             XmlSerializer employeeXmlSerializer = new(typeof(List<Employee>));
 
             using StreamWriter streamWriter = new(filePath);

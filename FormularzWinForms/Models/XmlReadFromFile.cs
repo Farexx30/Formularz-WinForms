@@ -16,7 +16,7 @@ namespace FormularzWinForms.Models
     {
         public List<Employee> DeserializeEmployees()
         {
-            string filePath = @"C:\Users\Łukasz\Documents\Studia\Programowanie obiektowe i graficzne\FormularzWinForms\FormularzWinForms\Data\Employees.xml";
+            string filePath = @"C:\Users\Łukasz\source\repos\Formularz-WinForms\FormularzWinForms\Data\Employees.xml";
 
             var employees = new List<Employee>();
             XmlSerializer employeeXmlDeserializer = new(typeof(List<Employee>));

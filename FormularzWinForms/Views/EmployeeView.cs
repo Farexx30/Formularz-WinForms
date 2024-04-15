@@ -3,6 +3,7 @@ using FormularzWinForms.Presenters;
 using Microsoft.VisualBasic.ApplicationServices;
 using System.Collections.ObjectModel;
 using System.Xml.Serialization;
+using static System.Windows.Forms.ListBox;
 
 
 //Zmienic strukture do wzorca MVP!!!, sprobowac zmodyfikowac/uproscic nieco funkcje/metody + przejrzec ogolnie co i jak
@@ -10,27 +11,29 @@ namespace FormularzWinForms
 {
     public interface IEmployeeView
     {
-        event Action? AddToListBox;
+        event Func<List<Employee>>? ReadFromFileAction;
+        event Action<ObjectCollection>? SaveToFileAction;
     }
 
     public partial class EmployeeView : Form, IEmployeeView
     {
-        private readonly IXmlSaveToFile _xmlSaveToFile;
-        private readonly IXmlReadFromFile _xmlReadFromFile;
-        private readonly IEmployeePresenter _employeePresenter;
+        public event Func<List<Employee>>? ReadFromFileAction;
+        public event Action<ObjectCollection>? SaveToFileAction;
 
-        public event Action? AddToListBox;
-
-        public EmployeeView(IXmlSaveToFile xmlSaveToFileIXml, IXmlReadFromFile xmlReadFromFile, IEmployeePresenter employeePresenter)
+        public EmployeeView()
         {
             InitializeComponent();
-            _xmlSaveToFile = xmlSaveToFileIXml;
-            _xmlReadFromFile = xmlReadFromFile;
-            _employeePresenter = employeePresenter;
-            AddToListBox += _employeePresenter.HandleAddToListBox;
         }
 
-        public void AddToListBoxClicked(object sender, EventArgs e) => AddToListBox?.Invoke();
+        public void AddToListBoxClicked(object sender, EventArgs e)
+        {
+            if (CheckAllPossibleErrors())
+            {
+                var employee = GetDataFromBoxes();
+
+                DataListBox.Items.Add(employee.ToString());
+            }
+        }
 
         private bool CheckAllPossibleErrors()
         {
@@ -98,51 +101,43 @@ namespace FormularzWinForms
             return employee;
         }
 
-        private void DodajButton_Click(object sender, EventArgs e)
-        {
-            if (CheckAllPossibleErrors())
-            {
-                var employee = GetDataFromBoxes();
-
-                DataListBox.Items.Add(employee.ToString());
-            }
-        }   
-
-        private void WczytajButton_Click(object sender, EventArgs e)
+        private void ReadFromFileClick(object sender, EventArgs e)
         {
             DataListBox.Items.Clear();
-            var employees = _xmlReadFromFile.DeserializeEmployees();
-
-            foreach (Employee employee in employees)
+            var employees = ReadFromFileAction?.Invoke();
+            foreach (Employee employee in employees!)
             {
                 DataListBox.Items.Add(employee.ToString());
             }
         }
 
-        private void ZapiszButton_Click(object sender, EventArgs e)
+        private void SaveToFileClick(object sender, EventArgs e)
         {
             //var employees = DataListBox.Items
             //    .Cast<Employee>()
             //    .ToList();
 
-            var employees = new List<Employee>();
-            foreach(var employee in DataListBox.Items)
-            {
-                string[] employeeData = employee.ToString()!.Split(", ");
-                var employeeObject = new Employee()
-                {
-                    FirstName = employeeData[0],
-                    LastName = employeeData[1],
-                    DateOfBirth = DateTime.Parse(employeeData[2]),
-                    Salary = decimal.Parse(employeeData[3][..^4]),
-                    Position= employeeData[4],
-                    ContractType = Employee.MapToContractType(employeeData[5])
-                };
-    
-                employees.Add(employeeObject);
-            }
+            SaveToFileAction?.Invoke(DataListBox.Items);
+        }
 
-            _xmlSaveToFile.SerializeEmployees(employees);
+        private void DataListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (DataListBox.SelectedIndex != -1)
+            {
+                string[] selectedEmployeeData = DataListBox.SelectedItem!.ToString()!.Split(", ");
+
+                ImieTextBox.Text = selectedEmployeeData[0];
+                NazwiskoTextBox.Text = selectedEmployeeData[1];
+                DataUrodzeniaDateTimePicker.Value = DateTime.Parse(selectedEmployeeData[2]);
+                PensjaNumericUpDown.Value = decimal.Parse(selectedEmployeeData[3][..^4]);
+                StanowiskoComboBox.Text = selectedEmployeeData[4];
+                if (selectedEmployeeData[5] == "Umowa na czas nieokreœlony")
+                    Umowa1RadioButton.Checked = true;
+                else if (selectedEmployeeData[5] == "Umowa na czas okreœlony")
+                    Umowa2RadioButton.Checked = true;
+                else
+                    Umowa3RadioButton.Checked = true;
+            }
         }
     }
 }

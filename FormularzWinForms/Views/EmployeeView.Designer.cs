@@ -235,7 +235,7 @@ namespace FormularzWinForms
             ZapiszButton.TabIndex = 1;
             ZapiszButton.Text = "Zapisz";
             ZapiszButton.UseVisualStyleBackColor = true;
-            ZapiszButton.Click += ZapiszButton_Click;
+            ZapiszButton.Click += SaveToFileClick;
             // 
             // WczytajButton
             // 
@@ -245,7 +245,7 @@ namespace FormularzWinForms
             WczytajButton.TabIndex = 2;
             WczytajButton.Text = "Wczytaj";
             WczytajButton.UseVisualStyleBackColor = true;
-            WczytajButton.Click += WczytajButton_Click;
+            WczytajButton.Click += ReadFromFileClick;
             // 
             // FormErrorProvider
             // 
@@ -261,8 +261,9 @@ namespace FormularzWinForms
             DataListBox.Name = "DataListBox";
             DataListBox.Size = new Size(482, 334);
             DataListBox.TabIndex = 3;
+            DataListBox.SelectedIndexChanged += DataListBox_SelectedIndexChanged;
             // 
-            // Form1
+            // EmployeeView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -271,7 +272,7 @@ namespace FormularzWinForms
             Controls.Add(WczytajButton);
             Controls.Add(ZapiszButton);
             Controls.Add(DanePracownikaGroupBox);
-            Name = "Form1";
+            Name = "EmployeeView";
             Text = "Form1";
             DanePracownikaGroupBox.ResumeLayout(false);
             DanePracownikaGroupBox.PerformLayout();
