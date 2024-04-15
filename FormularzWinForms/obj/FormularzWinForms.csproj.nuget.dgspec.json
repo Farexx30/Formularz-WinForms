@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Łukasz\\source\\repos\\Formularz-WinForms\\FormularzWinForms\\FormularzWinForms.csproj": {}
+    "C:\\Users\\Łukasz\\Documents\\Studia\\Programowanie obiektowe i graficzne\\FormularzWinForms\\FormularzWinForms\\FormularzWinForms.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Łukasz\\source\\repos\\Formularz-WinForms\\FormularzWinForms\\FormularzWinForms.csproj": {
+    "C:\\Users\\Łukasz\\Documents\\Studia\\Programowanie obiektowe i graficzne\\FormularzWinForms\\FormularzWinForms\\FormularzWinForms.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Łukasz\\source\\repos\\Formularz-WinForms\\FormularzWinForms\\FormularzWinForms.csproj",
+        "projectUniqueName": "C:\\Users\\Łukasz\\Documents\\Studia\\Programowanie obiektowe i graficzne\\FormularzWinForms\\FormularzWinForms\\FormularzWinForms.csproj",
         "projectName": "FormularzWinForms",
-        "projectPath": "C:\\Users\\Łukasz\\source\\repos\\Formularz-WinForms\\FormularzWinForms\\FormularzWinForms.csproj",
+        "projectPath": "C:\\Users\\Łukasz\\Documents\\Studia\\Programowanie obiektowe i graficzne\\FormularzWinForms\\FormularzWinForms\\FormularzWinForms.csproj",
         "packagesPath": "C:\\Users\\Łukasz\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Łukasz\\source\\repos\\Formularz-WinForms\\FormularzWinForms\\obj\\",
+        "outputPath": "C:\\Users\\Łukasz\\Documents\\Studia\\Programowanie obiektowe i graficzne\\FormularzWinForms\\FormularzWinForms\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -26,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

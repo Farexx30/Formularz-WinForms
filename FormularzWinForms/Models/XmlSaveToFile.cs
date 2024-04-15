@@ -9,19 +9,23 @@ namespace FormularzWinForms.Models
 {
     public interface IXmlSaveToFile
     {
-        void SerializeEmployees(List<Employee> employees);
+        Task SerializeEmployees(List<Employee> employees);
     }
 
     internal class XmlSaveToFile : IXmlSaveToFile
     {
-        public void SerializeEmployees(List<Employee> employees)
+        public async Task SerializeEmployees(List<Employee> employees)
         {
-            string filePath = @"C:\Users\Łukasz\source\repos\Formularz-WinForms\FormularzWinForms\Data\Employees.xml";
+            string dataDirectory = Directory.GetParent(Directory.GetCurrentDirectory())!.Parent!.Parent!.FullName;
+            string filePath = $@"{dataDirectory}\Data\Employees.xml";
+
             XmlSerializer employeeXmlSerializer = new(typeof(List<Employee>));
 
-            using StreamWriter streamWriter = new(filePath);
-            employeeXmlSerializer.Serialize(streamWriter, employees);
+            await Task.Run(() =>
+            {
+                using StreamWriter streamWriter = new(filePath);
+                employeeXmlSerializer.Serialize(streamWriter, employees);
+            });
         }
-
     }
 }

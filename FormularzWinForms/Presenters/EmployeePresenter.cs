@@ -1,70 +1,56 @@
 ﻿using FormularzWinForms.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Windows.Forms.ListBox;
 
 namespace FormularzWinForms.Presenters
-{ 
+{
     public interface IEmployeePresenter
     {
-        public IEmployeeView EmployeeView { get; }
+        public IEmployeeView View { get; }
     }
 
     public class EmployeePresenter : IEmployeePresenter
     {
-        private readonly IEmployee _employee = null!;
+        private readonly IEmployeeModel _employeeModel = null!;
         private readonly IXmlSaveToFile _xmlSaveToFile;
         private readonly IXmlReadFromFile _xmlReadFromFile;
         private readonly BindingSource _employeeBindingSource = [];
-        public IEmployeeView EmployeeView { get; }
+        public IEmployeeView View { get; }
 
-        public EmployeePresenter(IEmployee employee, IEmployeeView employeeView, IXmlSaveToFile xmlSaveToFileIXml, IXmlReadFromFile xmlReadFromFile)
+        public EmployeePresenter(IEmployeeModel employeeModel, IEmployeeView employeeView, IXmlSaveToFile xmlSaveToFileIXml, IXmlReadFromFile xmlReadFromFile)
         {
-            _employee = employee;
+            _employeeModel = employeeModel;
 
-            EmployeeView = employeeView;
-            EmployeeView.BindListBoxData(_employeeBindingSource);
-            EmployeeView.EmployeeAddedAction += HandleEmployeeAddedAction;
-            EmployeeView.SaveToFileAction += HandleSaveToFileAction;
-            EmployeeView.ReadFromFileAction += HandleReadFromFileAction;
+            View = employeeView;
+            View.EmployeeAddedAction += HandleEmployeeAddedAction;
+            View.SaveToFileAction += HandleSaveToFileActionAsync;
+            View.ReadFromFileAction += HandleReadFromFileActionAsync;
 
             _xmlSaveToFile = xmlSaveToFileIXml;
             _xmlReadFromFile = xmlReadFromFile;
+
+            BindDataWithView();
         }
 
+        //Binding data with view:
+        private void BindDataWithView()
+        {
+            View.BindListBoxData(_employeeBindingSource);
+        }
+
+
+        //Click Handlers:
         private void HandleEmployeeAddedAction()
         {
-            _employeeBindingSource.Add(EmployeeView.GetDataFromBoxes());
+            _employeeBindingSource.Add(View.GetDataFromBoxes());
         }
 
-        private void HandleSaveToFileAction()
+        private async Task HandleSaveToFileActionAsync()
         {
-            var employees = new List<Employee>();
-            foreach (var employee in _employeeBindingSource)
-            {
-                string[] employeeData = employee.ToString()!.Split(", ");
-                var employeeObject = new Employee()
-                {
-                    FirstName = employeeData[0],
-                    LastName = employeeData[1],
-                    DateOfBirth = DateTime.Parse(employeeData[2]),
-                    Salary = decimal.Parse(employeeData[3][..^4]),
-                    Position = employeeData[4],
-                    ContractType = Employee.MapToContractType(employeeData[5])
-                };
-
-                employees.Add(employeeObject);
-            }
-
-            _xmlSaveToFile.SerializeEmployees(employees);
+            await _xmlSaveToFile.SerializeEmployees((List<Employee>)_employeeBindingSource.DataSource);
         }
 
-        private void HandleReadFromFileAction()
+        private async Task HandleReadFromFileActionAsync()
         {
-            _employeeBindingSource.DataSource = _xmlReadFromFile.DeserializeEmployees();
+             _employeeBindingSource.DataSource = await _xmlReadFromFile.DeserializeEmployees();
         }
     }
 }

@@ -23,7 +23,7 @@ namespace FormularzWinForms
 
             var presenter = FormConfiguration.ServiceProvider.GetRequiredService<EmployeePresenter>();
 
-            Application.Run((Form)presenter.EmployeeView);
+            Application.Run((Form)presenter.View);
         }
        
     }

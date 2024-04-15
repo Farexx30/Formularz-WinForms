@@ -9,20 +9,31 @@ namespace FormularzWinForms.Models
 {
     public interface IXmlReadFromFile
     {
-        List<Employee> DeserializeEmployees();
+        Task<List<Employee>> DeserializeEmployees();
     }
 
     internal class XmlReadFromFile : IXmlReadFromFile
     {
-        public List<Employee> DeserializeEmployees()
+        public async Task<List<Employee>> DeserializeEmployees()
         {
-            string filePath = @"C:\Users\Łukasz\source\repos\Formularz-WinForms\FormularzWinForms\Data\Employees.xml";
-
+            string dataDirectory = Directory.GetParent(Directory.GetCurrentDirectory())!.Parent!.Parent!.FullName;
+            string filePath = $@"{dataDirectory}\Data\Employees.xml";
             var employees = new List<Employee>();
-            XmlSerializer employeeXmlDeserializer = new(typeof(List<Employee>));
 
-            using StreamReader streamReader = new(filePath);
-            employees.AddRange((List<Employee>)employeeXmlDeserializer.Deserialize(streamReader)!);
+            if (!File.Exists(filePath))
+            {
+                MessageBox.Show($"Nie odnaleziono pliku \"{filePath}\"");
+            }
+            else
+            {                
+                XmlSerializer employeeXmlDeserializer = new(typeof(List<Employee>));
+
+                await Task.Run(() =>
+                {
+                    using StreamReader streamReader = new(filePath);
+                    employees.AddRange((List<Employee>)employeeXmlDeserializer.Deserialize(streamReader)!);
+                });
+            }
 
             return employees;
         }

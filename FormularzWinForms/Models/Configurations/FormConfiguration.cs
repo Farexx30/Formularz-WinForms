@@ -24,7 +24,7 @@ namespace FormularzWinForms.Models.Configurations
         {
             services.AddTransient<IXmlSaveToFile, XmlSaveToFile>();
             services.AddTransient<IXmlReadFromFile, XmlReadFromFile>();
-            services.AddTransient<IEmployee, Employee>();
+            services.AddTransient<IEmployeeModel, Employee>();
             services.AddTransient<IEmployeeView, EmployeeView>();
             services.AddTransient<EmployeePresenter>();
 

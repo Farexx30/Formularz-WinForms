@@ -13,12 +13,12 @@ namespace FormularzWinForms.Models
         Umowa3
     }
 
-    public interface IEmployee
+    public interface IEmployeeModel
     {
-
+        
     }
 
-    public class Employee : IEmployee
+    public class Employee : IEmployeeModel
     {
         public string FirstName { get; set; } = null!;
         public string LastName { get; set; } = null!;
@@ -27,12 +27,13 @@ namespace FormularzWinForms.Models
         public string Position { get; set; } = null!;
         public ContractType ContractType { get; set; } = ContractType.Umowa1;
 
+
         public override string ToString()
         {
             string contractString = MapFromContractType(ContractType);
-            var dateOfBirthOnly = DateOnly.FromDateTime(DateOfBirth);
-            return $"{FirstName}, {LastName}, {dateOfBirthOnly}, {Salary} PLN, {Position}, {contractString}";
+            return $"{FirstName}, {LastName}, {DateOfBirth:dd.MM.yyyy}r., {Salary} PLN, {Position}, {contractString}";
         }
+
 
         private static string MapFromContractType(ContractType contractType)
         {
@@ -41,11 +42,11 @@ namespace FormularzWinForms.Models
             return "Umowa zlecenie";
         }
 
-        public static ContractType MapToContractType(string contractString)
-        {
-            if (contractString == "Umowa na czas nieokreślony") return ContractType.Umowa1;
-            else if (contractString == "Umowa na czas określony") return ContractType.Umowa2;
-            return ContractType.Umowa3;
-        }
+        //private static ContractType MapToContractType(string contractString)
+        //{
+        //    if (contractString == "Umowa na czas nieokreślony") return ContractType.Umowa1;
+        //    else if (contractString == "Umowa na czas określony") return ContractType.Umowa2;
+        //    return ContractType.Umowa3;
+        //}
     }
 }

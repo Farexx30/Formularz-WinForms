@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fDvv9RibuNOy2spDhSuSvBtcWNw+Xi8u+w6FaduYKsezXVMk/pgZQ1jbPHyUkvd2f3rSw4LFepwXcX9PIzCcoA==",
+  "dgSpecHash": "KReBzHu5FMj/YWaVoERXbjPJi+XPRk0BS3nhLPqGguOQaNSmYAirfJRwxtGS2Gb6JSpcccZW5xx+kYQwo34aow==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Łukasz\\source\\repos\\Formularz-WinForms\\FormularzWinForms\\FormularzWinForms.csproj",
+  "projectFilePath": "C:\\Users\\Łukasz\\Documents\\Studia\\Programowanie obiektowe i graficzne\\FormularzWinForms\\FormularzWinForms\\FormularzWinForms.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Łukasz\\.nuget\\packages\\microsoft.extensions.configuration\\8.0.0\\microsoft.extensions.configuration.8.0.0.nupkg.sha512",
     "C:\\Users\\Łukasz\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\8.0.0\\microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512",

@@ -1,42 +1,37 @@
 using FormularzWinForms.Models;
-using FormularzWinForms.Presenters;
-using Microsoft.VisualBasic.ApplicationServices;
-using System.Collections.ObjectModel;
-using System.Xml.Serialization;
-using static System.Windows.Forms.ListBox;
 
 
-//Zmienic strukture do wzorca MVP!!!, sprobowac zmodyfikowac/uproscic nieco funkcje/metody + przejrzec ogolnie co i jak
+//Jak starczy czasu to jeszcze spróbowaæ uproœciæ metodê "SelectedEmployeeFromListBoxClick"
 namespace FormularzWinForms
 {
     public interface IEmployeeView
-    {
+    {       
         event Action? EmployeeAddedAction;
-        event Action? ReadFromFileAction;
-        event Action? SaveToFileAction;
+        event Func<Task> ReadFromFileAction;
+        event Func<Task> SaveToFileAction;
         void BindListBoxData(BindingSource employees);
         Employee GetDataFromBoxes();
     }
 
     public partial class EmployeeView : Form, IEmployeeView
     {
+        private int _lastClickedIndex = -2;
+
         public event Action? EmployeeAddedAction;
-        public event Action? ReadFromFileAction;
-        public event Action? SaveToFileAction;
+        public event Func<Task> ReadFromFileAction = default!;
+        public event Func<Task> SaveToFileAction = default!;
 
         public EmployeeView()
         {
-            InitializeComponent();           
+            InitializeComponent();
         }
 
-        public void AddToListBoxClicked(object sender, EventArgs e)
-        {
-            if (CheckAllPossibleErrors())
-            {
-                EmployeeAddedAction?.Invoke();
-            }
-        }
 
+        //Bind data method with presenter - view:
+        public void BindListBoxData(BindingSource employees) => DataListBox.DataSource = employees;
+
+
+        //Error methods:
         private bool CheckAllPossibleErrors()
         {
             return !SetErrorIfFullNameEmpty(ImieTextBox)
@@ -59,7 +54,7 @@ namespace FormularzWinForms
 
         private bool SetErrorIfFullNameEmpty(TextBox textBox)
         {
-            if (string.IsNullOrEmpty(textBox.Text))
+            if (string.IsNullOrEmpty(textBox.Text.Trim()))
             {
                 FormErrorProvider.SetError(textBox, "To pole nie mo¿e byæ puste");
                 return true;
@@ -81,13 +76,8 @@ namespace FormularzWinForms
             return false;
         }
 
-        private ContractType GetCheckedRadioButton()
-        {
-            if (Umowa1RadioButton.Checked) return ContractType.Umowa1;
-            else if (Umowa2RadioButton.Checked) return ContractType.Umowa2;
-            return ContractType.Umowa3;
-        }
 
+        //Getting from form methods:
         public Employee GetDataFromBoxes()
         {
             var employee = new Employee()
@@ -103,22 +93,25 @@ namespace FormularzWinForms
             return employee;
         }
 
-        private void ReadFromFileClick(object sender, EventArgs e) => ReadFromFileAction?.Invoke();          
+        private ContractType GetCheckedRadioButton()
+        {
+            if (Umowa1RadioButton.Checked) return ContractType.Umowa1;
+            else if (Umowa2RadioButton.Checked) return ContractType.Umowa2;
+            return ContractType.Umowa3;
+        }
 
-        private void SaveToFileClick(object sender, EventArgs e) => SaveToFileAction?.Invoke();
-        //var employees = DataListBox.Items
-        //    .Cast<Employee>()
-        //    .ToList();
 
+        //Getting from ListBox method:
         private void SelectedEmployeeFromListBoxClick(object sender, EventArgs e)
         {
-            if (DataListBox.SelectedIndex != -1)
+            if (DataListBox.SelectedIndex != -1 && _lastClickedIndex != DataListBox.SelectedIndex)
             {
+                FormErrorProvider.Clear();
                 string[] selectedEmployeeData = DataListBox.SelectedItem!.ToString()!.Split(", ");
 
                 ImieTextBox.Text = selectedEmployeeData[0];
                 NazwiskoTextBox.Text = selectedEmployeeData[1];
-                DataUrodzeniaDateTimePicker.Value = DateTime.Parse(selectedEmployeeData[2]);
+                DataUrodzeniaDateTimePicker.Value = DateTime.Parse(selectedEmployeeData[2][..^2]);
                 PensjaNumericUpDown.Value = decimal.Parse(selectedEmployeeData[3][..^4]);
                 StanowiskoComboBox.Text = selectedEmployeeData[4];
                 if (selectedEmployeeData[5] == "Umowa na czas nieokreœlony")
@@ -127,12 +120,55 @@ namespace FormularzWinForms
                     Umowa2RadioButton.Checked = true;
                 else
                     Umowa3RadioButton.Checked = true;
+
+                _lastClickedIndex = DataListBox.SelectedIndex;
+            }
+            else if(_lastClickedIndex == DataListBox.SelectedIndex)
+            {
+                SetDefaultValuesToAllFormBoxes();
+
+                DataListBox.SelectedIndex = -1;
+                _lastClickedIndex = -2;
             }
         }
 
-        public void BindListBoxData(BindingSource employees)
+
+        //Click methods:
+        private void AddToListBoxClicked(object sender, EventArgs e)
         {
-            DataListBox.DataSource = employees;
+            if (CheckAllPossibleErrors())
+            {
+                EmployeeAddedAction?.Invoke();
+                SetDefaultValuesToAllFormBoxes();
+            }
+        }
+
+        private async void ReadFromFileClickAsync(object sender, EventArgs e)
+        {
+            if (DataListBox.SelectedIndex != -1) SetDefaultValuesToAllFormBoxes();
+
+            await ReadFromFileAction.Invoke();
+
+            DataListBox.SelectedIndex = -1;
+            _lastClickedIndex = -2;
+        }
+
+        private async void SaveToFileClickAsync(object sender, EventArgs e) => await SaveToFileAction.Invoke();
+        //var employees = DataListBox.Items
+        //    .Cast<Employee>()
+        //    .ToList();
+
+
+        //Additional methods:
+        private void SetDefaultValuesToAllFormBoxes()
+        {
+            ImieTextBox.Clear();
+            NazwiskoTextBox.Clear();
+            DataUrodzeniaDateTimePicker.Value = DateTime.Now;
+            PensjaNumericUpDown.Value = 4000;
+            StanowiskoComboBox.SelectedIndex = 0;
+            Umowa1RadioButton.Checked = true;
+            DataListBox.SelectedIndex = -1;
         }
     }
 }

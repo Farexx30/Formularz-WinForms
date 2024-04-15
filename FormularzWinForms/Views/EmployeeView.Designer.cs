@@ -235,7 +235,7 @@ namespace FormularzWinForms
             ZapiszButton.TabIndex = 1;
             ZapiszButton.Text = "Zapisz";
             ZapiszButton.UseVisualStyleBackColor = true;
-            ZapiszButton.Click += SaveToFileClick;
+            ZapiszButton.Click += SaveToFileClickAsync;
             // 
             // WczytajButton
             // 
@@ -245,7 +245,7 @@ namespace FormularzWinForms
             WczytajButton.TabIndex = 2;
             WczytajButton.Text = "Wczytaj";
             WczytajButton.UseVisualStyleBackColor = true;
-            WczytajButton.Click += ReadFromFileClick;
+            WczytajButton.Click += ReadFromFileClickAsync;
             // 
             // FormErrorProvider
             // 

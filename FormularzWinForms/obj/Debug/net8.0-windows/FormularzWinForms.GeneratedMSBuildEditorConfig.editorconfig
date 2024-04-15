@@ -14,6 +14,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = FormularzWinForms
-build_property.ProjectDir = C:\Users\Łukasz\source\repos\Formularz-WinForms\FormularzWinForms\
+build_property.ProjectDir = C:\Users\Łukasz\Documents\Studia\Programowanie obiektowe i graficzne\FormularzWinForms\FormularzWinForms\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
