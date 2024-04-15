@@ -1,4 +1,3 @@
-using FormularzWinForms.Models;
 using FormularzWinForms.Models.Configurations;
 using FormularzWinForms.Presenters;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,10 +12,10 @@ namespace FormularzWinForms
         [STAThread]
         static void Main()
         {
-            var builder = FormConfiguration.CreateHostBuilder().Build();
-
-            // To customize application configuration such as set high DPI settings or default font,
+            //To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
+
+            var builder = FormConfiguration.CreateHostBuilder().Build();
 
             ApplicationConfiguration.Initialize();
             FormConfiguration.ServiceProvider = builder.Services;
@@ -24,7 +23,6 @@ namespace FormularzWinForms
             var presenter = FormConfiguration.ServiceProvider.GetRequiredService<EmployeePresenter>();
 
             Application.Run((Form)presenter.View);
-        }
-       
+        }      
     }
 }

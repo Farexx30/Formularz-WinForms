@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FormularzWinForms.Models
+﻿namespace FormularzWinForms.Models
 {
     public enum ContractType
     {
@@ -30,8 +24,8 @@ namespace FormularzWinForms.Models
 
         public override string ToString()
         {
-            string contractString = MapFromContractType(ContractType);
-            return $"{FirstName}, {LastName}, {DateOfBirth:dd.MM.yyyy}r., {Salary} PLN, {Position}, {contractString}";
+            string contractTypeString = MapFromContractType(ContractType);
+            return $"{FirstName}, {LastName}, {DateOfBirth:dd.MM.yyyy}r., {Salary} PLN, {Position}, {contractTypeString}";
         }
 
 
@@ -41,12 +35,5 @@ namespace FormularzWinForms.Models
             else if (contractType == ContractType.Umowa2) return "Umowa na czas określony";
             return "Umowa zlecenie";
         }
-
-        //private static ContractType MapToContractType(string contractString)
-        //{
-        //    if (contractString == "Umowa na czas nieokreślony") return ContractType.Umowa1;
-        //    else if (contractString == "Umowa na czas określony") return ContractType.Umowa2;
-        //    return ContractType.Umowa3;
-        //}
     }
 }

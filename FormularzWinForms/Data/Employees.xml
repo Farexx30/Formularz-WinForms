@@ -72,4 +72,12 @@
     <Position>Tester</Position>
     <ContractType>Umowa1</ContractType>
   </Employee>
+  <Employee>
+    <FirstName>Anna</FirstName>
+    <LastName>Polak</LastName>
+    <DateOfBirth>1977-11-29T23:07:03.96</DateOfBirth>
+    <Salary>17600</Salary>
+    <Position>Starszy programista</Position>
+    <ContractType>Umowa2</ContractType>
+  </Employee>
 </ArrayOfEmployee>

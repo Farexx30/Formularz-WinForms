@@ -1,6 +1,4 @@
-﻿using System.Windows.Forms;
-
-namespace FormularzWinForms
+﻿namespace FormularzWinForms
 {
     partial class EmployeeView
     {
@@ -219,6 +217,7 @@ namespace FormularzWinForms
             NazwiskoTextBox.Name = "NazwiskoTextBox";
             NazwiskoTextBox.Size = new Size(151, 23);
             NazwiskoTextBox.TabIndex = 1;
+            NazwiskoTextBox.MaxLength = 32;
             // 
             // ImieTextBox
             // 
@@ -226,6 +225,7 @@ namespace FormularzWinForms
             ImieTextBox.Name = "ImieTextBox";
             ImieTextBox.Size = new Size(151, 23);
             ImieTextBox.TabIndex = 0;
+            ImieTextBox.MaxLength = 32;
             // 
             // ZapiszButton
             // 
@@ -261,7 +261,7 @@ namespace FormularzWinForms
             DataListBox.Name = "DataListBox";
             DataListBox.Size = new Size(482, 334);
             DataListBox.TabIndex = 3;
-            DataListBox.SelectedIndexChanged += SelectedEmployeeFromListBoxClick;
+            DataListBox.Click += SelectedEmployeeFromListBoxClick;
             // 
             // EmployeeView
             // 
@@ -273,7 +273,7 @@ namespace FormularzWinForms
             Controls.Add(ZapiszButton);
             Controls.Add(DanePracownikaGroupBox);
             Name = "EmployeeView";
-            Text = "Form1";
+            Text = "Pracownicy";
             DanePracownikaGroupBox.ResumeLayout(false);
             DanePracownikaGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)PensjaNumericUpDown).EndInit();

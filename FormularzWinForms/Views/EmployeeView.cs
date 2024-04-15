@@ -1,7 +1,5 @@
 using FormularzWinForms.Models;
 
-
-//Jak starczy czasu to jeszcze spróbowaæ uproœciæ metodê "SelectedEmployeeFromListBoxClick"
 namespace FormularzWinForms
 {
     public interface IEmployeeView
@@ -27,7 +25,7 @@ namespace FormularzWinForms
         }
 
 
-        //Bind data method with presenter - view:
+        //Bind data with presenter:
         public void BindListBoxData(BindingSource employees) => DataListBox.DataSource = employees;
 
 
@@ -77,7 +75,7 @@ namespace FormularzWinForms
         }
 
 
-        //Getting from form methods:
+        //Getting from Form methods:
         public Employee GetDataFromBoxes()
         {
             var employee = new Employee()
@@ -101,12 +99,13 @@ namespace FormularzWinForms
         }
 
 
-        //Getting from ListBox method:
+        //Getting from ListBox methods:
         private void SelectedEmployeeFromListBoxClick(object sender, EventArgs e)
-        {
+        {           
             if (DataListBox.SelectedIndex != -1 && _lastClickedIndex != DataListBox.SelectedIndex)
             {
                 FormErrorProvider.Clear();
+
                 string[] selectedEmployeeData = DataListBox.SelectedItem!.ToString()!.Split(", ");
 
                 ImieTextBox.Text = selectedEmployeeData[0];
@@ -114,22 +113,24 @@ namespace FormularzWinForms
                 DataUrodzeniaDateTimePicker.Value = DateTime.Parse(selectedEmployeeData[2][..^2]);
                 PensjaNumericUpDown.Value = decimal.Parse(selectedEmployeeData[3][..^4]);
                 StanowiskoComboBox.Text = selectedEmployeeData[4];
-                if (selectedEmployeeData[5] == "Umowa na czas nieokreœlony")
-                    Umowa1RadioButton.Checked = true;
-                else if (selectedEmployeeData[5] == "Umowa na czas okreœlony")
-                    Umowa2RadioButton.Checked = true;
-                else
-                    Umowa3RadioButton.Checked = true;
+                CheckCorrectRadioButton(selectedEmployeeData[5]);
 
                 _lastClickedIndex = DataListBox.SelectedIndex;
             }
-            else if(_lastClickedIndex == DataListBox.SelectedIndex)
+            else if (_lastClickedIndex == DataListBox.SelectedIndex)
             {
                 SetDefaultValuesToAllFormBoxes();
 
                 DataListBox.SelectedIndex = -1;
                 _lastClickedIndex = -2;
-            }
+            }            
+        }
+
+        private void CheckCorrectRadioButton(string contractTypeString)
+        {
+            if (contractTypeString == "Umowa na czas nieokreœlony") Umowa1RadioButton.Checked = true;
+            else if (contractTypeString == "Umowa na czas okreœlony") Umowa2RadioButton.Checked = true;
+            else Umowa3RadioButton.Checked = true;
         }
 
 
@@ -153,10 +154,10 @@ namespace FormularzWinForms
             _lastClickedIndex = -2;
         }
 
-        private async void SaveToFileClickAsync(object sender, EventArgs e) => await SaveToFileAction.Invoke();
-        //var employees = DataListBox.Items
-        //    .Cast<Employee>()
-        //    .ToList();
+        private async void SaveToFileClickAsync(object sender, EventArgs e)
+        {
+            await SaveToFileAction.Invoke();
+        }
 
 
         //Additional methods:

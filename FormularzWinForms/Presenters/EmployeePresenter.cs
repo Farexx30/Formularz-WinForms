@@ -4,7 +4,7 @@ namespace FormularzWinForms.Presenters
 {
     public interface IEmployeePresenter
     {
-        public IEmployeeView View { get; }
+        IEmployeeView View { get; }
     }
 
     public class EmployeePresenter : IEmployeePresenter
@@ -20,9 +20,9 @@ namespace FormularzWinForms.Presenters
             _employeeModel = employeeModel;
 
             View = employeeView;
-            View.EmployeeAddedAction += HandleEmployeeAddedAction;
-            View.SaveToFileAction += HandleSaveToFileActionAsync;
-            View.ReadFromFileAction += HandleReadFromFileActionAsync;
+            View.EmployeeAddedAction += HandleEmployeeAddedClick;
+            View.SaveToFileAction += HandleSaveToFileClickAsync;
+            View.ReadFromFileAction += HandleReadFromFileClickAsync;
 
             _xmlSaveToFile = xmlSaveToFileIXml;
             _xmlReadFromFile = xmlReadFromFile;
@@ -31,24 +31,21 @@ namespace FormularzWinForms.Presenters
         }
 
         //Binding data with view:
-        private void BindDataWithView()
-        {
-            View.BindListBoxData(_employeeBindingSource);
-        }
+        private void BindDataWithView() => View.BindListBoxData(_employeeBindingSource);
 
 
         //Click Handlers:
-        private void HandleEmployeeAddedAction()
+        private void HandleEmployeeAddedClick()
         {
             _employeeBindingSource.Add(View.GetDataFromBoxes());
         }
 
-        private async Task HandleSaveToFileActionAsync()
+        private async Task HandleSaveToFileClickAsync()
         {
             await _xmlSaveToFile.SerializeEmployees((List<Employee>)_employeeBindingSource.DataSource);
         }
 
-        private async Task HandleReadFromFileActionAsync()
+        private async Task HandleReadFromFileClickAsync()
         {
              _employeeBindingSource.DataSource = await _xmlReadFromFile.DeserializeEmployees();
         }
