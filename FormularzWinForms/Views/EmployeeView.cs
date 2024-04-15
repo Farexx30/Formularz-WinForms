@@ -11,27 +11,29 @@ namespace FormularzWinForms
 {
     public interface IEmployeeView
     {
-        event Func<List<Employee>>? ReadFromFileAction;
-        event Action<ObjectCollection>? SaveToFileAction;
+        event Action? EmployeeAddedAction;
+        event Action? ReadFromFileAction;
+        event Action? SaveToFileAction;
+        void BindListBoxData(BindingSource employees);
+        Employee GetDataFromBoxes();
     }
 
     public partial class EmployeeView : Form, IEmployeeView
     {
-        public event Func<List<Employee>>? ReadFromFileAction;
-        public event Action<ObjectCollection>? SaveToFileAction;
+        public event Action? EmployeeAddedAction;
+        public event Action? ReadFromFileAction;
+        public event Action? SaveToFileAction;
 
         public EmployeeView()
         {
-            InitializeComponent();
+            InitializeComponent();           
         }
 
         public void AddToListBoxClicked(object sender, EventArgs e)
         {
             if (CheckAllPossibleErrors())
             {
-                var employee = GetDataFromBoxes();
-
-                DataListBox.Items.Add(employee.ToString());
+                EmployeeAddedAction?.Invoke();
             }
         }
 
@@ -86,7 +88,7 @@ namespace FormularzWinForms
             return ContractType.Umowa3;
         }
 
-        private Employee GetDataFromBoxes()
+        public Employee GetDataFromBoxes()
         {
             var employee = new Employee()
             {
@@ -101,26 +103,14 @@ namespace FormularzWinForms
             return employee;
         }
 
-        private void ReadFromFileClick(object sender, EventArgs e)
-        {
-            DataListBox.Items.Clear();
-            var employees = ReadFromFileAction?.Invoke();
-            foreach (Employee employee in employees!)
-            {
-                DataListBox.Items.Add(employee.ToString());
-            }
-        }
+        private void ReadFromFileClick(object sender, EventArgs e) => ReadFromFileAction?.Invoke();          
 
-        private void SaveToFileClick(object sender, EventArgs e)
-        {
-            //var employees = DataListBox.Items
-            //    .Cast<Employee>()
-            //    .ToList();
+        private void SaveToFileClick(object sender, EventArgs e) => SaveToFileAction?.Invoke();
+        //var employees = DataListBox.Items
+        //    .Cast<Employee>()
+        //    .ToList();
 
-            SaveToFileAction?.Invoke(DataListBox.Items);
-        }
-
-        private void DataListBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void SelectedEmployeeFromListBoxClick(object sender, EventArgs e)
         {
             if (DataListBox.SelectedIndex != -1)
             {
@@ -138,6 +128,11 @@ namespace FormularzWinForms
                 else
                     Umowa3RadioButton.Checked = true;
             }
+        }
+
+        public void BindListBoxData(BindingSource employees)
+        {
+            DataListBox.DataSource = employees;
         }
     }
 }

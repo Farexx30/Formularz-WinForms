@@ -21,13 +21,9 @@ namespace FormularzWinForms
             ApplicationConfiguration.Initialize();
             FormConfiguration.ServiceProvider = builder.Services;
 
-            var employeeView = FormConfiguration.ServiceProvider.GetRequiredService<EmployeeView>();
-            var employeeModel = new Employee();
-            var xmlEmployeeSerializer = new XmlSaveToFile();
-            var xmlEmployeeDeserializer = new XmlReadFromFile();
-            _ = new EmployeePresenter(employeeModel, employeeView, xmlEmployeeSerializer, xmlEmployeeDeserializer);
+            var presenter = FormConfiguration.ServiceProvider.GetRequiredService<EmployeePresenter>();
 
-            Application.Run(employeeView);
+            Application.Run((Form)presenter.EmployeeView);
         }
        
     }

@@ -56,4 +56,36 @@
     <Position>Tester</Position>
     <ContractType>Umowa3</ContractType>
   </Employee>
+  <Employee>
+    <FirstName>bimbosz</FirstName>
+    <LastName>klocek</LastName>
+    <DateOfBirth>2003-04-11T00:00:00</DateOfBirth>
+    <Salary>4000</Salary>
+    <Position>Tester</Position>
+    <ContractType>Umowa3</ContractType>
+  </Employee>
+  <Employee>
+    <FirstName>oriś</FirstName>
+    <LastName>Świnkarz</LastName>
+    <DateOfBirth>2010-01-02T00:00:00</DateOfBirth>
+    <Salary>13900</Salary>
+    <Position>Projektant</Position>
+    <ContractType>Umowa2</ContractType>
+  </Employee>
+  <Employee>
+    <FirstName>Leo</FirstName>
+    <LastName>Messi</LastName>
+    <DateOfBirth>2024-04-14T00:00:00</DateOfBirth>
+    <Salary>4000</Salary>
+    <Position>Tester</Position>
+    <ContractType>Umowa2</ContractType>
+  </Employee>
+  <Employee>
+    <FirstName>martyś</FirstName>
+    <LastName>uwu</LastName>
+    <DateOfBirth>2003-02-11T00:00:00</DateOfBirth>
+    <Salary>20000</Salary>
+    <Position>Starszy programista</Position>
+    <ContractType>Umowa3</ContractType>
+  </Employee>
 </ArrayOfEmployee>

@@ -10,31 +10,40 @@ namespace FormularzWinForms.Presenters
 { 
     public interface IEmployeePresenter
     {
-        void HandleSaveToFileAction(ObjectCollection dataListBoxItems);
-        List<Employee> HandleReadFromFileAction();
+        public IEmployeeView EmployeeView { get; }
     }
 
     public class EmployeePresenter : IEmployeePresenter
     {
         private readonly IEmployee _employee = null!;
-        private readonly IEmployeeView _employeeView = null!;
         private readonly IXmlSaveToFile _xmlSaveToFile;
         private readonly IXmlReadFromFile _xmlReadFromFile;
+        private readonly BindingSource _employeeBindingSource = [];
+        public IEmployeeView EmployeeView { get; }
 
         public EmployeePresenter(IEmployee employee, IEmployeeView employeeView, IXmlSaveToFile xmlSaveToFileIXml, IXmlReadFromFile xmlReadFromFile)
         {
             _employee = employee;
-            _employeeView = employeeView;
-            _employeeView.SaveToFileAction += HandleSaveToFileAction;
-            _employeeView.ReadFromFileAction += HandleReadFromFileAction;
+
+            EmployeeView = employeeView;
+            EmployeeView.BindListBoxData(_employeeBindingSource);
+            EmployeeView.EmployeeAddedAction += HandleEmployeeAddedAction;
+            EmployeeView.SaveToFileAction += HandleSaveToFileAction;
+            EmployeeView.ReadFromFileAction += HandleReadFromFileAction;
+
             _xmlSaveToFile = xmlSaveToFileIXml;
             _xmlReadFromFile = xmlReadFromFile;
         }
 
-        public void HandleSaveToFileAction(ObjectCollection dataListBoxItems)
+        private void HandleEmployeeAddedAction()
+        {
+            _employeeBindingSource.Add(EmployeeView.GetDataFromBoxes());
+        }
+
+        private void HandleSaveToFileAction()
         {
             var employees = new List<Employee>();
-            foreach (var employee in dataListBoxItems)
+            foreach (var employee in _employeeBindingSource)
             {
                 string[] employeeData = employee.ToString()!.Split(", ");
                 var employeeObject = new Employee()
@@ -53,10 +62,9 @@ namespace FormularzWinForms.Presenters
             _xmlSaveToFile.SerializeEmployees(employees);
         }
 
-        public List<Employee> HandleReadFromFileAction()
-        {          
-            var employees = _xmlReadFromFile.DeserializeEmployees();
-            return employees;
+        private void HandleReadFromFileAction()
+        {
+            _employeeBindingSource.DataSource = _xmlReadFromFile.DeserializeEmployees();
         }
     }
 }

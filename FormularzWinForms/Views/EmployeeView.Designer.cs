@@ -261,7 +261,7 @@ namespace FormularzWinForms
             DataListBox.Name = "DataListBox";
             DataListBox.Size = new Size(482, 334);
             DataListBox.TabIndex = 3;
-            DataListBox.SelectedIndexChanged += DataListBox_SelectedIndexChanged;
+            DataListBox.SelectedIndexChanged += SelectedEmployeeFromListBoxClick;
             // 
             // EmployeeView
             // 
