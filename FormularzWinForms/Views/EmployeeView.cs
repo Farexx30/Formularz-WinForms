@@ -4,9 +4,9 @@ namespace FormularzWinForms
 {
     public interface IEmployeeView
     {       
-        event Action? EmployeeAddedAction;
-        event Func<Task> ReadFromFileAction;
-        event Func<Task> SaveToFileAction;
+        event Action EmployeeAddedEvent;
+        event Func<Task> ReadFromFileEvent;
+        event Func<Task> SaveToFileEvent;
         void BindListBoxData(BindingSource employees);
         Employee GetDataFromBoxes();
     }
@@ -15,9 +15,9 @@ namespace FormularzWinForms
     {
         private int _lastClickedIndex = -2;
 
-        public event Action? EmployeeAddedAction;
-        public event Func<Task> ReadFromFileAction = default!;
-        public event Func<Task> SaveToFileAction = default!;
+        public event Action EmployeeAddedEvent = default!;
+        public event Func<Task> ReadFromFileEvent = default!;
+        public event Func<Task> SaveToFileEvent = default!;
 
         public EmployeeView()
         {
@@ -139,7 +139,7 @@ namespace FormularzWinForms
         {
             if (CheckAllPossibleErrors())
             {
-                EmployeeAddedAction?.Invoke();
+                EmployeeAddedEvent.Invoke();
                 SetDefaultValuesToAllFormBoxes();
             }
         }
@@ -148,7 +148,7 @@ namespace FormularzWinForms
         {
             if (DataListBox.SelectedIndex != -1) SetDefaultValuesToAllFormBoxes();
 
-            await ReadFromFileAction.Invoke();
+            await ReadFromFileEvent.Invoke();
 
             DataListBox.SelectedIndex = -1;
             _lastClickedIndex = -2;
@@ -156,7 +156,7 @@ namespace FormularzWinForms
 
         private async void SaveToFileClickAsync(object sender, EventArgs e)
         {
-            await SaveToFileAction.Invoke();
+            await SaveToFileEvent.Invoke();
         }
 
 

@@ -20,9 +20,9 @@ namespace FormularzWinForms.Presenters
             _employeeModel = employeeModel;
 
             View = employeeView;
-            View.EmployeeAddedAction += HandleEmployeeAddedClick;
-            View.SaveToFileAction += HandleSaveToFileClickAsync;
-            View.ReadFromFileAction += HandleReadFromFileClickAsync;
+            View.EmployeeAddedEvent += HandleEmployeeAddedClick;
+            View.SaveToFileEvent += HandleSaveToFileClickAsync;
+            View.ReadFromFileEvent += HandleReadFromFileClickAsync;
 
             _xmlSaveToFile = xmlSaveToFileIXml;
             _xmlReadFromFile = xmlReadFromFile;
