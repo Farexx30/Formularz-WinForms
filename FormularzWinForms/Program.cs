@@ -18,9 +18,10 @@ namespace FormularzWinForms
             var builder = FormConfiguration.CreateHostBuilder().Build();
 
             ApplicationConfiguration.Initialize();
+
             FormConfiguration.ServiceProvider = builder.Services;
 
-            var presenter = FormConfiguration.ServiceProvider.GetRequiredService<EmployeePresenter>();
+            var presenter = FormConfiguration.ServiceProvider.GetRequiredService<IEmployeePresenter>();
 
             Application.Run((Form)presenter.View);
         }      

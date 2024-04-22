@@ -1,4 +1,5 @@
 using FormularzWinForms.Models;
+using System.ComponentModel;
 
 namespace FormularzWinForms
 {

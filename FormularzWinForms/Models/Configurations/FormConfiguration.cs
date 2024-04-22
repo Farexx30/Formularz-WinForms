@@ -6,7 +6,7 @@ namespace FormularzWinForms.Models.Configurations
 {
     public static class FormConfiguration
     {
-        public static IServiceProvider ServiceProvider { get; set; } = default!;
+        public static IServiceProvider? ServiceProvider { get; set; }
 
         public static IHostBuilder CreateHostBuilder() =>
             Host.CreateDefaultBuilder()
@@ -21,7 +21,7 @@ namespace FormularzWinForms.Models.Configurations
             services.AddTransient<IXmlReadFromFile, XmlReadFromFile>();
             services.AddTransient<IEmployeeModel, Employee>();
             services.AddTransient<IEmployeeView, EmployeeView>();
-            services.AddTransient<EmployeePresenter>();
+            services.AddTransient<IEmployeePresenter, EmployeePresenter>();
 
             return services;
         }
