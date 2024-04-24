@@ -83,8 +83,8 @@ namespace FormularzWinForms
         {
             var employeeData = new EmployeeDto()
             {
-                FirstName = ImieTextBox.Text,
-                LastName = NazwiskoTextBox.Text,
+                FirstName = ImieTextBox.Text.Trim(),
+                LastName = NazwiskoTextBox.Text.Trim(),
                 DateOfBirth = DataUrodzeniaDateTimePicker.Value,
                 Salary = PensjaNumericUpDown.Value,
                 Position = StanowiskoComboBox.Text,
@@ -140,7 +140,7 @@ namespace FormularzWinForms
             else Umowa3RadioButton.Checked = true;
         }
 
-        private void AddToListBoxClicked(object sender, EventArgs e)
+        private void AddToListBoxClick(object sender, EventArgs e)
         {
             if (CheckAllPossibleErrors()) //This might be in presenter as well
             {

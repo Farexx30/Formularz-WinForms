@@ -86,7 +86,7 @@
             DodajButton.TabIndex = 14;
             DodajButton.Text = "Dodaj";
             DodajButton.UseVisualStyleBackColor = true;
-            DodajButton.Click += AddToListBoxClicked;
+            DodajButton.Click += AddToListBoxClick;
             // 
             // RodzajUmowyLabel
             // 
