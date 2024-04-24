@@ -80,4 +80,12 @@
     <Position>Starszy programista</Position>
     <ContractType>Umowa2</ContractType>
   </Employee>
+  <Employee>
+    <FirstName>Adam</FirstName>
+    <LastName>Małysz</LastName>
+    <DateOfBirth>2024-04-14T10:12:59.273</DateOfBirth>
+    <Salary>18000</Salary>
+    <Position>Projektant</Position>
+    <ContractType>Umowa3</ContractType>
+  </Employee>
 </ArrayOfEmployee>

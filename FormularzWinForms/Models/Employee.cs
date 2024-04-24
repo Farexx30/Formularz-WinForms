@@ -9,7 +9,7 @@
 
     public interface IEmployeeModel
     {
-        
+        ContractType MapToContractType(int contractId);
     }
 
     public class Employee : IEmployeeModel
@@ -19,7 +19,7 @@
         public DateTime DateOfBirth { get; set; }
         public decimal Salary { get; set; }
         public string Position { get; set; } = null!;
-        public ContractType ContractType { get; set; } = ContractType.Umowa1;
+        public ContractType ContractType { get; set; }
 
 
         public override string ToString()
@@ -34,6 +34,13 @@
             if (contractType == ContractType.Umowa1) return "Umowa na czas nieokreślony";
             else if (contractType == ContractType.Umowa2) return "Umowa na czas określony";
             return "Umowa zlecenie";
+        }
+
+        public ContractType MapToContractType(int contractId)
+        {
+            if (contractId == 1) return ContractType.Umowa1;
+            else if (contractId == 2) return ContractType.Umowa2;
+            else return ContractType.Umowa3;
         }
     }
 }

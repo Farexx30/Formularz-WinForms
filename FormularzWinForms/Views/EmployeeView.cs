@@ -1,24 +1,23 @@
-using FormularzWinForms.Models;
-using System.ComponentModel;
+using FormularzWinForms.Views;
 
 namespace FormularzWinForms
 {
     public interface IEmployeeView
     {       
-        event Action EmployeeAddedEvent;
+        event Action? EmployeeAddedEvent;
         event Func<Task> ReadFromFileEvent;
         event Func<Task> SaveToFileEvent;
         void BindListBoxData(BindingSource employees);
-        Employee GetDataFromBoxes();
+        FormDataEmployeeView GetDataFromBoxes();
     }
 
     public partial class EmployeeView : Form, IEmployeeView
     {
         private int _lastClickedIndex = -2;
 
-        public event Action EmployeeAddedEvent = default!;
-        public event Func<Task> ReadFromFileEvent = default!;
-        public event Func<Task> SaveToFileEvent = default!;
+        public event Action? EmployeeAddedEvent;
+        public event Func<Task> ReadFromFileEvent = null!;
+        public event Func<Task> SaveToFileEvent = null!;
 
         public EmployeeView()
         {
@@ -77,27 +76,27 @@ namespace FormularzWinForms
 
 
         //Getting from Form methods:
-        public Employee GetDataFromBoxes()
+        public FormDataEmployeeView GetDataFromBoxes()
         {
-            var employee = new Employee()
+            var employeeData = new FormDataEmployeeView()
             {
                 FirstName = ImieTextBox.Text,
                 LastName = NazwiskoTextBox.Text,
                 DateOfBirth = DataUrodzeniaDateTimePicker.Value,
                 Salary = PensjaNumericUpDown.Value,
                 Position = StanowiskoComboBox.Text,
-                ContractType = GetCheckedRadioButton()
+                ContractId = GetCheckedRadioButton()
             };
 
-            return employee;
+            return employeeData;
         }
 
-        private ContractType GetCheckedRadioButton()
+        private int GetCheckedRadioButton()
         {
-            if (Umowa1RadioButton.Checked) return ContractType.Umowa1;
-            else if (Umowa2RadioButton.Checked) return ContractType.Umowa2;
-            return ContractType.Umowa3;
-        }
+            if (Umowa1RadioButton.Checked) return 1;
+            else if (Umowa2RadioButton.Checked) return 2;
+            return 3;
+        }   
 
 
         //Getting from ListBox methods:
@@ -140,7 +139,7 @@ namespace FormularzWinForms
         {
             if (CheckAllPossibleErrors())
             {
-                EmployeeAddedEvent.Invoke();
+                EmployeeAddedEvent?.Invoke();
                 SetDefaultValuesToAllFormBoxes();
             }
         }

@@ -9,7 +9,7 @@ namespace FormularzWinForms.Presenters
 
     public class EmployeePresenter : IEmployeePresenter
     {
-        private readonly IEmployeeModel _employeeModel = null!;
+        private readonly IEmployeeModel _employeeModel;
         private readonly IXmlSaveToFile _xmlSaveToFile;
         private readonly IXmlReadFromFile _xmlReadFromFile;
         private readonly BindingSource _employeeBindingSource = [];
@@ -37,7 +37,19 @@ namespace FormularzWinForms.Presenters
         //Click Handlers:
         private void HandleEmployeeAddedClick()
         {
-            _employeeBindingSource.Add(View.GetDataFromBoxes());
+            var employeeData = View.GetDataFromBoxes();
+
+            var employee = new Employee()
+            {
+                FirstName = employeeData.FirstName,
+                LastName = employeeData.LastName,
+                DateOfBirth = employeeData.DateOfBirth,
+                Salary = employeeData.Salary,
+                Position = employeeData.Position,
+                ContractType = _employeeModel.MapToContractType(employeeData.ContractId)
+            };
+
+            _employeeBindingSource.Add(employee);
         }
 
         private async Task HandleSaveToFileClickAsync()
