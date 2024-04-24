@@ -1,21 +1,24 @@
-using FormularzWinForms.Views;
+using FormularzWinForms.Dtos;
 
 namespace FormularzWinForms
 {
     public interface IEmployeeView
     {       
-        event Action? EmployeeAddedEvent;
+        event EventHandler? EmployeeAddedEvent;
+        event EventHandler<int>? EmployeeSelectedEvent;
         event Func<Task> ReadFromFileEvent;
         event Func<Task> SaveToFileEvent;
         void BindListBoxData(BindingSource employees);
-        FormDataEmployeeView GetDataFromBoxes();
+        EmployeeDto GetDataFromBoxes();
+        void DisplayData(EmployeeDto employeeDto);
     }
 
     public partial class EmployeeView : Form, IEmployeeView
     {
         private int _lastClickedIndex = -2;
 
-        public event Action? EmployeeAddedEvent;
+        public event EventHandler? EmployeeAddedEvent;
+        public event EventHandler<int>? EmployeeSelectedEvent;
         public event Func<Task> ReadFromFileEvent = null!;
         public event Func<Task> SaveToFileEvent = null!;
 
@@ -76,9 +79,9 @@ namespace FormularzWinForms
 
 
         //Getting from Form methods:
-        public FormDataEmployeeView GetDataFromBoxes()
+        public EmployeeDto GetDataFromBoxes()
         {
-            var employeeData = new FormDataEmployeeView()
+            var employeeData = new EmployeeDto()
             {
                 FirstName = ImieTextBox.Text,
                 LastName = NazwiskoTextBox.Text,
@@ -96,24 +99,17 @@ namespace FormularzWinForms
             if (Umowa1RadioButton.Checked) return 1;
             else if (Umowa2RadioButton.Checked) return 2;
             return 3;
-        }   
+        }
 
 
-        //Getting from ListBox methods:
+        //Click methods (and connected with it methods):
         private void SelectedEmployeeFromListBoxClick(object sender, EventArgs e)
         {           
             if (DataListBox.SelectedIndex != -1 && _lastClickedIndex != DataListBox.SelectedIndex)
             {
                 FormErrorProvider.Clear();
 
-                string[] selectedEmployeeData = DataListBox.SelectedItem!.ToString()!.Split(", ");
-
-                ImieTextBox.Text = selectedEmployeeData[0];
-                NazwiskoTextBox.Text = selectedEmployeeData[1];
-                DataUrodzeniaDateTimePicker.Value = DateTime.Parse(selectedEmployeeData[2][..^2]);
-                PensjaNumericUpDown.Value = decimal.Parse(selectedEmployeeData[3][..^4]);
-                StanowiskoComboBox.Text = selectedEmployeeData[4];
-                CheckCorrectRadioButton(selectedEmployeeData[5]);
+                EmployeeSelectedEvent?.Invoke(this, DataListBox.SelectedIndex);
 
                 _lastClickedIndex = DataListBox.SelectedIndex;
             }
@@ -126,20 +122,29 @@ namespace FormularzWinForms
             }            
         }
 
-        private void CheckCorrectRadioButton(string contractTypeString)
+        //Method displaying employees' data who is clicked:
+        public void DisplayData(EmployeeDto employeeDto)
         {
-            if (contractTypeString == "Umowa na czas nieokreœlony") Umowa1RadioButton.Checked = true;
-            else if (contractTypeString == "Umowa na czas okreœlony") Umowa2RadioButton.Checked = true;
+            ImieTextBox.Text = employeeDto.FirstName;
+            NazwiskoTextBox.Text = employeeDto.LastName;
+            DataUrodzeniaDateTimePicker.Value = employeeDto.DateOfBirth;
+            PensjaNumericUpDown.Value = employeeDto.Salary;
+            StanowiskoComboBox.Text = employeeDto.Position;
+            CheckCorrectRadioButton(employeeDto.ContractId);
+        }
+
+        private void CheckCorrectRadioButton(int contractId)
+        {
+            if (contractId == 1) Umowa1RadioButton.Checked = true;
+            else if (contractId == 2) Umowa2RadioButton.Checked = true;
             else Umowa3RadioButton.Checked = true;
         }
 
-
-        //Click methods:
         private void AddToListBoxClicked(object sender, EventArgs e)
         {
-            if (CheckAllPossibleErrors())
+            if (CheckAllPossibleErrors()) //This might be in presenter as well
             {
-                EmployeeAddedEvent?.Invoke();
+                EmployeeAddedEvent?.Invoke(this, EventArgs.Empty);
                 SetDefaultValuesToAllFormBoxes();
             }
         }

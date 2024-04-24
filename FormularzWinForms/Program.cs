@@ -10,6 +10,8 @@ namespace FormularzWinForms
         ///  The main entry point for the application.
         /// </summary>
         [STAThread]
+
+        //NOTE: While converting EmployeeDto <-> Employee, the "Automapper" would be a great choice. But I won't use it in this project.
         static void Main()
         {
             //To customize application configuration such as set high DPI settings or default font,
