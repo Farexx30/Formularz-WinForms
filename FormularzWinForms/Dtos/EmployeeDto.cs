@@ -13,11 +13,11 @@ namespace FormularzWinForms.Dtos
 
         public override string ToString()
         {
-            string contractTypeString = MapFromContractType(ContractId);
+            string contractTypeString = MapFromContractId(ContractId);
             return $"{FirstName}, {LastName}, {DateOfBirth:dd.MM.yyyy}r., {Salary} PLN, {Position}, {contractTypeString}";
         }
 
-        private static string MapFromContractType(int contractId)
+        private static string MapFromContractId(int contractId)
         {
             if (contractId == 1) return "Umowa na czas nieokreślony";
             else if (contractId == 2) return "Umowa na czas określony";
